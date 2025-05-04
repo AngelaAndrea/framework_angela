@@ -25,7 +25,10 @@ jobs:
       
       - name: Run CodeceptJS tests
         run: npx codeceptjs run --plugins allure
-      
+
+      - name: Generate Allure report
+        run: npx allure generate output --clean
+
       - name: Upload Allure Report
         uses: actions/upload-artifact@v2
         with:
