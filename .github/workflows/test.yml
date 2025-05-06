@@ -12,12 +12,12 @@ jobs:
 
     steps:
       - name: Hacer checkout del repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Instalar Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
-          node-version: '23.6.1'
+          node-version: '20'
 
       - name: Instalar dependencias
         run: npm ci
