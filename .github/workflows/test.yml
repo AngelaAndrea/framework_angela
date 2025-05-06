@@ -1,10 +1,10 @@
-name: Run CodeceptJS Tests
+name: Ejecutar pruebas CodeceptJS
 
 on: 
   push:
     branches: [master]
   pull_request:
-    branches:  [master]
+    branches: [master]
 
 jobs:
   codecept-test:
@@ -22,10 +22,13 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: Instalar navegadores de Playwright
-        run: npx playwright install chromium
+      - name: Instalar dependencias del sistema
+        run: sudo apt-get install -y xvfb libxss1 libappindicator3-1 libasound2
 
-      - name: Ejecutar pruebas
-        run: npx codeceptjs run --features 
+      - name: Instalar navegadores de Playwright
+        run: npx playwright install
+
+      - name: Ejecutar pruebas con Xvfb
+        run: xvfb-run -a npx codeceptjs run --verbose
 
    
