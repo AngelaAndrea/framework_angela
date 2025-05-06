@@ -2,10 +2,12 @@ const { I } = inject();
 
 Given('estoy en la página principal de YouTube', async () => {
   I.amOnPage('https://www.youtube.com');
-  I.waitForElement('button[aria-label="Guía"]',30);
-  I.click('button[aria-label="Guía"]');
-  I.wait(2);
+  I.waitForElement('#guide-button', 30); // Selector actualizado
+I.click('#guide-button');
+I.waitForElement('a[title="Explorar"]', 20);
+I.click('a[title="Explorar"]');
 });
+
 
 When('hago clic en el botón {string} en la barra de navegación', async (boton) => {
   const explorarXpath = '//*[@id="guide-section-title"][contains(text(), "Explorar")]';
