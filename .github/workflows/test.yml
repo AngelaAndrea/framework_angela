@@ -1,34 +1,38 @@
-name: Ejecutar pruebas CodeceptJS
+name: Run CodeceptJS Tests
 
-on: 
+on:
   push:
-    branches: [master]
+    branches:
+      - master
   pull_request:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
-  codecept-test:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Hacer checkout del repo
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Instalar Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '20'
 
-      - name: Instalar dependencias
-        run: npm ci
+      - name: Install dependencies
+        run: npm install
 
-      - name: Instalar dependencias del sistema
-        run: sudo apt-get install -y xvfb libxss1 libappindicator3-1 libasound2
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install --with-deps
 
-      - name: Instalar navegadores de Playwright
-        run: npx playwright install
+      - name: Set DISPLAY and disable headless
+        run: |
+          echo "HEADLESS=false" >> $GITHUB_ENV
+          echo "DISPLAY=:99" >> $GITHUB_ENV
 
-      - name: Ejecutar pruebas con Xvfb
-        run: xvfb-run -a npx codeceptjs run --verbose
+      - name: Run CodeceptJS tests
+        run: npx codeceptjs run
 
    
