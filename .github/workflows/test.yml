@@ -1,4 +1,4 @@
-name: Run Tests with CodeceptJS and Allure
+name: Run CodeceptJS Tests
 
 on:
   push:
@@ -24,13 +24,4 @@ jobs:
         run: npm ci
       
       - name: Run CodeceptJS tests
-        run: npx codeceptjs run --plugins allure
-
-      - name: Generate Allure report
-        run: npx allure generate output --clean
-
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          name: allure-report
-          path: output/allure-report
+        run: npx codeceptjs run

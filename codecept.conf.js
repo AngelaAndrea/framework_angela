@@ -14,10 +14,8 @@ exports.config = {
   },
   plugins: {
     allure: {
-      enabled: true
-    },
-    screenshotOnFail: {
-      enabled: true
+      enabled: true,        // Asegúrate de que el plugin esté habilitado
+      outputDir: './output/allure-report',  // Verifica que la ruta esté configurada correctamente
     }
   },
   name: 'framework_angela'

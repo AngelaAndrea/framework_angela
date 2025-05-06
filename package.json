@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
- "test": "npx codeceptjs run --plugins allure",
-  "allure:report": "npx allure generate output --clean && npx allure open"
-},
+    "test": "npx codeceptjs run --plugins allure",
+    "allure:report": "npx allure generate output --clean && npx allure open"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
