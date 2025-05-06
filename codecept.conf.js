@@ -6,6 +6,9 @@ exports.config = {
       url: 'https://www.youtube.com',
       show: false,         // Apaga el modo gráfico
       headless: true,      // Asegura que sea en modo headless
+      timeout: 30000, // Aumenta timeout global
+      waitForTimeout: 30000,
+      // ...
       browser: 'chromium'
     }
   },
