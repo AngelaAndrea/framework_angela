@@ -1,38 +1,31 @@
 name: Run CodeceptJS Tests
 
-on:
+on: 
   push:
-    branches:
-      - master
+    branches: [master]
   pull_request:
-    branches:
-      - master
+    branches:  [master]
 
 jobs:
-  test:
+  codecept-test:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Hacer checkout del repo
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '23.6.1'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Instalar dependencias
+        run: npm ci
 
-      - name: Install Playwright browsers
-        run: |
-          npx playwright install --with-deps
+      - name: Instalar navegadores de Playwright
+        run: npx playwright install chromium
 
-      - name: Set DISPLAY and disable headless
-        run: |
-          echo "HEADLESS=false" >> $GITHUB_ENV
-          echo "DISPLAY=:99" >> $GITHUB_ENV
+      - name: Ejecutar pruebas
+        run: npx codeceptjs run --features 
 
-      - name: Run CodeceptJS tests
-        run: npx codeceptjs run
-
-
+   
