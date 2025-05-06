@@ -3,10 +3,10 @@ name: Run CodeceptJS Tests
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   test:
@@ -21,7 +21,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run:  npm install
-      
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
       - name: Run CodeceptJS tests
         run: npx codeceptjs run
