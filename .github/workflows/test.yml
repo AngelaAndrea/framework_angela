@@ -24,11 +24,15 @@ jobs:
         run: npm install
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: |
+          npx playwright install --with-deps
 
-      - name: Install XVFB
-        run: sudo apt-get install -y xvfb
+      - name: Set DISPLAY and disable headless
+        run: |
+          echo "HEADLESS=false" >> $GITHUB_ENV
+          echo "DISPLAY=:99" >> $GITHUB_ENV
 
-      - name: Run CodeceptJS tests with xvfb
-        run: xvfb-run --auto-servernum --server-args='-screen 0 1280x720x24' npx codeceptjs run
+      - name: Run CodeceptJS tests
+        run: npx codeceptjs run
+
 
