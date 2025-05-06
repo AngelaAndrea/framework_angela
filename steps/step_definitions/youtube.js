@@ -2,7 +2,7 @@ const { I } = inject();
 
 Given('estoy en la página principal de YouTube', async () => {
   I.amOnPage('https://www.youtube.com');
-  I.waitForElement('button[aria-label="Guía"]', 10);
+  I.waitForElement('button[aria-label="Guía"]',30);
   I.click('button[aria-label="Guía"]');
   I.wait(2);
 });
