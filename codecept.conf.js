@@ -4,8 +4,9 @@ exports.config = {
   helpers: {
     Playwright: {
       url: 'https://www.youtube.com',
-      show: true,
-      browser: 'chromium',
+      show: false,         // Apaga el modo gráfico
+      headless: true,      // Asegura que sea en modo headless
+      browser: 'chromium'
     }
   },
   gherkin: {
