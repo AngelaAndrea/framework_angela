@@ -5,18 +5,16 @@ exports.config = {
     Playwright: {
       url: 'https://www.youtube.com',
       show: true,
-      browser: 'chromium'
+      browser: 'chromium',
     }
   },
   gherkin: {
     features: './features/youtube.feature',
-    steps: [ './steps/step_definitions/youtube.js']
+    steps: ['./steps/step_definitions/youtube.js']
   },
   plugins: {
-    allure: {
-      enabled: true,        // Asegúrate de que el plugin esté habilitado
-      outputDir: './output/allure-report',  // Verifica que la ruta esté configurada correctamente
-    }
+    // Elimina esta sección relacionada con Allure
   },
-  name: 'framework_angela'
+  name: 'framework_angela',
 }
+
