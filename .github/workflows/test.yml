@@ -31,9 +31,13 @@ jobs:
         run: |
           echo "HEADLESS=false" >> $GITHUB_ENV
           echo "DISPLAY=:99" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: |
+          npm install
+          npm install --save-dev allure-codeceptjs
 
-      - name: Run CodeceptJS tests
-        run: npx codeceptjs run
+      - name: Ejecutar pruebas
+        run: npx codeceptjs run --features --plugins allure
 
       - name: Get Allure history
         uses: actions/checkout@v3
