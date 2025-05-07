@@ -31,27 +31,13 @@ jobs:
         run: |
           echo "HEADLESS=false" >> $GITHUB_ENV
           echo "DISPLAY=:99" >> $GITHUB_ENV
-      - name: Install dependencies
-        run: |
-          npm install
-          npm install --save-dev allure-codeceptjs
 
       - name: Ejecutar pruebas
         run: npx codeceptjs run --features --plugins allure
-
-      - name: Get Allure history
-        uses: actions/checkout@v3
-        if: always()
-        with:
-          ref: gh-pages
-          path: gh-pages
 
       - name: Generar reporte de Allure
         uses: simple-elf/allure-report-action@v1.6
         if: always()
         with:
           allure_results: allure-results
-          allure_history: gh-pages
           allure_report: allure-history
-
-   
