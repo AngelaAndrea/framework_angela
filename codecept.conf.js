@@ -17,7 +17,11 @@ exports.config = {
     steps: ['./steps/step_definitions/youtube.js']
   },
   plugins: {
-    // Elimina esta sección relacionada con Allure
+    allure: {
+      enabled: true,
+      require: "allure-codeceptjs",
+      resultsDir: "allure-results",
+    },
   },
   name: 'framework_angela',
 }

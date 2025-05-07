@@ -2,10 +2,9 @@ const { I } = inject();
 
 Given('estoy en la página principal de YouTube', async () => {
   I.amOnPage('https://www.youtube.com');
-  I.waitForElement('#guide-button', 30); // Selector actualizado
-I.click('#guide-button');
-I.waitForElement('a[title="Explorar"]', 20);
-I.click('a[title="Explorar"]');
+  I.waitForElement('button[aria-label="Guía"]',30);
+  I.click('button[aria-label="Guía"]');
+  I.wait(2);
 });
 
 

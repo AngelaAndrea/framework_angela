@@ -35,4 +35,19 @@ jobs:
       - name: Run CodeceptJS tests
         run: npx codeceptjs run
 
+      - name: Get Allure history
+        uses: actions/checkout@v3
+        if: always()
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Generar reporte de Allure
+        uses: simple-elf/allure-report-action@v1.6
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: gh-pages
+          allure_report: allure-history
+
    
