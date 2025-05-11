@@ -13,37 +13,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/checkout@v3
+      
+      - name: Checkout Allure history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
         with:
-          node-version: '20'
+          ref: gh-pages
+          path: gh-pages-history
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.14.0'
 
       - name: Install dependencies
         run: npm install
 
       - name: Install dependencies
         run: |
-             npm install
-             npm install --save-dev allure-codeceptjs
-
+             npm ci
 
       - name: Install Playwright browsers
         run: |
-          npx playwright install --with-deps
-
-      - name: Set DISPLAY and disable headless
-        run: |
-          echo "HEADLESS=false" >> $GITHUB_ENV
-          echo "DISPLAY=:99" >> $GITHUB_ENV
+          npx playwright install chronmium
 
       - name: Ejecutar pruebas
         run: npx codeceptjs run --features --plugins allure
 
-      - name: Generar reporte de Allure
-        uses: simple-elf/allure-report-action@v1.6
+      - name: Generate Allure report
+        uses: simple-elf/allure-report-action@v1.7
         if: always()
         with:
+          gh_pages: gh-pages-history
           allure_results: allure-results
-          allure_report: allure-history
+          allure_history: allure-history
+
+      - name: Generate Allure report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: gh-pages-history
+          allure_results: allure-results
+          allure_history: allure-history
