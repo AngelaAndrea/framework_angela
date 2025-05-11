@@ -7,6 +7,7 @@ exports.config = {
       show: false,         // Apaga el modo gráfico
       headless: true,      // Asegura que sea en modo headless
       timeout: 30000, // Aumenta timeout global
+      locate: "es-MX",
       waitForTimeout: 30000,
       // ...
       browser: 'chromium'
