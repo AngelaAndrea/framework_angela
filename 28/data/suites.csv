@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun May 11 04:24:51 GMT 2025","Sun May 11 04:24:57 GMT 2025","6216","Validaciones de navegación y reproducción en YouTube","","","","","Buscar un video de lofi y mostrar resultados",""
+"broken","Sun May 11 04:25:43 GMT 2025","Sun May 11 04:26:20 GMT 2025","36695","Validaciones de navegación y reproducción en YouTube","","","","","Ver subtítulos activados en un video educativo",""
+"broken","Sun May 11 04:23:48 GMT 2025","Sun May 11 04:24:19 GMT 2025","31752","Validaciones de navegación y reproducción en YouTube","","","","","Usuario hace clic en ""Explorar"" y navega a la categoría Música",""
+"broken","Sun May 11 04:24:57 GMT 2025","Sun May 11 04:25:43 GMT 2025","46358","Validaciones de navegación y reproducción en YouTube","","","","","Reproducir el primer video de los resultados",""
+"broken","Sun May 11 04:24:19 GMT 2025","Sun May 11 04:24:51 GMT 2025","31519","Validaciones de navegación y reproducción en YouTube","","","","","Validar atributos data-title en íconos de la sección Explorar",""
