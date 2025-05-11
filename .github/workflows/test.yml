@@ -37,7 +37,7 @@ jobs:
 
       - name: Install Playwright browsers
         run: |
-          npx playwright install chronmium
+          npx playwright install chromium
 
       - name: Ejecutar pruebas
         run: npx codeceptjs run --features --plugins allure
